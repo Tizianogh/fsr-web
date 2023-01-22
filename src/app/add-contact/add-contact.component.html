@@ -1,0 +1,27 @@
+<div class="add-contacts">
+    <form [formGroup]="addContactForm" (ngSubmit)="submitFormAddContact(addContactForm)" id="add-contact-from-wrapper">
+        <div id="add-contact-from">
+            <div class="field"><span>Profil</span></div>
+            <input type="text" name="profilLastname" formControlName="profilLastname"  id="profil-lastname" placeholder="Nom">
+            <input type="text" name="profilName" formControlName="profilName"  id="profil-name" placeholder="Prenom">
+            <input type="text" name="profilEmail" formControlName="profilEmail"  id="profil-email" placeholder="Email">
+            <div class="field"><span>Adresse</span></div>
+            <input type="text" name="profilAdressStreet" formControlName="profilAdressStreet"  id="profil-address-street" placeholder="Rue">
+            <input type="text" name="profilAdressCity" formControlName="profilAdressCity"  id="profil-address-city" placeholder="Ville">
+            <input type="text" name="profilAddressZip" formControlName="profilAddressZip"  id="profil-address-zip" placeholder="CP">
+            <input type="text" name="profilAddressCountry" formControlName="profilAddressCountry"  id="profil-address-country" placeholder="Pays">
+            <div class="field"><span>Numero(s)</span></div>
+        </div>
+           <div formArrayName="aliases">
+        <div *ngFor="let alias of aliases.controls; let i=index">
+            <input class="for-button-delete" id="alias-{{ i }}" type="text" placeholder="Numero # {{i}}" id="profil-phone" [formControlName]="i">
+            <a (click)="removeQuantity(i)" class="button error button-delete"><img class="trash-icon" src="/assets/icons/svg/trash.svg" alt="Supprimer"></a>          
+        </div>
+        <button type="button" (click)="addAlias()" class="button save button-add">
+            <img class="plus-icon" src="/assets/icons/svg/plus.svg" alt="Ajouter">
+        </button>
+    </div>
+        <button [disabled]="!addContactForm.valid" type="submit" class="button save for-button-add">Save</button>
+
+    </form>
+</div>

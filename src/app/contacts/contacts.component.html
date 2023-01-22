@@ -1,0 +1,11 @@
+<app-add-contact/>
+<ng-container *ngIf="appState$ | async as appState" [ngSwitch]="appState.state">
+    <ng-container *ngSwitchCase="stateEnum.LOADED_STATE">
+        <ul *ngFor="let contact of appState.appData.data.results">
+            <app-contact [contact]="contact"/>
+        </ul>
+    </ng-container>
+    <ng-container *ngSwitchCase="stateEnum.ERROR_STATE">
+      <h1>Error</h1>
+    </ng-container>
+  </ng-container>

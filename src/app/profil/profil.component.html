@@ -1,0 +1,21 @@
+<div class="add-contacts">
+    <form id="add-contact-from-wrapper">
+        <div id="add-contact-from">
+            <img class="edit-profil-picture" src="https://ui-avatars.com/api/?rounded=true" alt="Profil">
+            <div class="field"><span>Profil</span></div>
+            <input type="text" name="profil-lastname" id="profil-lastname" placeholder="Nom">
+            <input type="text" name="profil-name" id="profil-name" placeholder="Prenom">
+            <input type="text" name="profil-email" id="profil-email" placeholder="Email">
+            <div class="field"><span>Adresse</span></div>
+            <input type="text" name="profil-address-street" id="profil-address-street" placeholder="Rue">
+            <input type="text" name="profil-address-city" id="profil-address-city" placeholder="Ville">
+            <input type="text" name="profil-address-country" id="profil-address-country" placeholder="Pays">
+            <div class="field"><span>Numero(s)</span></div>
+            <input type="text" name="profil-phone[]" id="profil-phone" placeholder="Numero">
+        </div>
+        <button type="submit" class="button save for-button-add">Save</button>
+        <a (click)="addInputRow()" class="button save button-add">
+            <img class="plus-icon" src="/assets/icons/svg/plus.svg" alt="Ajouter">
+        </a>
+    </form>
+</div>
