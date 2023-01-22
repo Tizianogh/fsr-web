@@ -21,6 +21,13 @@ export class GroupsService {
         .pipe(tap(console.log), catchError(this.handleError))
     );
 
+  getGroupById$ = (idGroup: string = '1') =>
+    <Observable<Response<ContactGroups>>>(
+      this.http
+        .get<Response<ContactGroups>>(`${this.apiUrl}/groups/${idGroup}`)
+        .pipe(tap(console.log), catchError(this.handleError))
+    );
+
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);
     return throwError(() => error);

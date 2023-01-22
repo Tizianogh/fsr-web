@@ -1,11 +1,11 @@
-<li class="group">
-    <img class="avatar" src="https://ui-avatars.com/api/?background={{randomColor}}&color=fff&name=Hugo+Doe" alt="Contact">
+<li class="contact">
+    <img class="avatar" src="https://ui-avatars.com/api/?background={{randomColor}}&color=fff&name={{contact.firstName}}+{{contact.lastName}}" alt="Contact">
     <div class="wrapper-title">
-        <a href="" class="group-link">
-            <span class="title-group">{{contact.firstName}} {{contact.lastName}}</span>
+        <a class="contact-link">
+            <span class="title-contact">{{contact.firstName}} {{contact.lastName}}</span>
         </a>
-        <a href="" class="text-group">
-            <span class="text-group">{{contact.phones[0].num}}</span>
+        <a class="text-contact">
+            <span class="text-contact">{{contact.phones[0].num}}</span>
         </a>
     </div>
 </li>

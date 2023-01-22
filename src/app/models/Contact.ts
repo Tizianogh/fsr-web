@@ -3,7 +3,7 @@ import { ContactGroups } from './ContactGroups';
 import { PhoneNum } from './PhoneNum';
 
 export interface Contact {
-  idContact?: number;
+  idContact?: string;
   firstName: string;
   lastName: string;
   email: string;

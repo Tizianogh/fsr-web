@@ -25,6 +25,15 @@ export class ContactService {
         .pipe(tap(console.log), catchError(this.handleError))
     );
 
+  getByID$ = (idContact: string = '1') =>
+    <Observable<Response<Contact>>>(
+      this.http
+        .get<Response<Contact>>(
+          `${this.apiUrl}/retrieve/contact/id/${idContact}`
+        )
+        .pipe(tap(console.log), catchError(this.handleError))
+    );
+
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);
     return throwError(() => error);

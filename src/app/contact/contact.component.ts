@@ -12,7 +12,6 @@ export class ContactComponent {
 
   ngOnInit(): void {
     this.color();
-    console.log(typeof this.contact);
   }
 
   color() {

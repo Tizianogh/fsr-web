@@ -8,4 +8,6 @@ import { ContactGroups } from '../models/ContactGroups';
 })
 export class GroupComponent {
   @Input() group: ContactGroups;
+
+  ngOnInit(): void {}
 }

@@ -1,6 +1,6 @@
 <aside class="sidebar">
     <div class="profil-icon">
-        <a id="profil" class="menu" (click)="toggle('profil')">
+        <a id="profil" class="menu">
             <img class="profil-icon icon" src="https://ui-avatars.com/api/?rounded=true" alt="Profil">
         </a>
     </div>
@@ -8,10 +8,10 @@
     <div class="nav">
         <nav>
             <ul>
-                <a id="groups" class="menu" (click)="toggle('groups')">
+                <a id="groups" class="menu">
                     <img class="group-icon" src="/assets/icons/svg/group.svg" alt="Groups">
                 </a>
-                <a id="contacts" class="menu" (click)="toggle('contacts')">
+                <a routerLink="/contacts"  id="contacts" class="menu">
                     <img class="contact-icon" src="/assets/icons/svg/contact.svg" alt="Contacts">
                 </a>
             </ul>
@@ -20,15 +20,15 @@
         </div>
     </div>
 
-    <div id="sidebar-contacts" class="wrapper-nav" *ngIf="contacts">
-        <app-contacts/>
-    </div>
+    <!-- <div id="sidebar-contacts" class="wrapper-nav"> -->
+        <!-- <app-contacts/> -->
+    <!-- </div> -->
 
-    <div id="sidebar-profil" class="wrapper-nav" *ngIf="profil">
-        <app-profil/>
-    </div>
+    <!-- <div id="sidebar-profil" class="wrapper-nav"> -->
+        <!-- <app-profil/> -->
+    <!-- </div> -->
 
-    <div id="sidebar-groups" class="wrapper-nav" *ngIf="groups">
+    <div id="sidebar-groups" class="wrapper-nav">
         <app-groups/>
     </div>
 </aside>
