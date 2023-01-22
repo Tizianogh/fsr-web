@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { StorageService } from '../services/storage/storage.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +6,26 @@ import { StorageService } from '../services/storage/storage.service';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  constructor(private storage: StorageService) {}
-  nom: string;
-  prenom: string;
-
-  ngOnInit(): void {}
+  groups = true;
+  contacts = false;
+  profil = false;
+  toggle(element: string) {
+    switch (element) {
+      case 'groups':
+        this.groups = true;
+        this.contacts = false;
+        this.profil = false;
+        break;
+      case 'contacts':
+        this.groups = false;
+        this.contacts = true;
+        this.profil = false;
+        break;
+      case 'profil':
+        this.groups = false;
+        this.contacts = false;
+        this.profil = true;
+        break;
+    }
+  }
 }

@@ -20,6 +20,9 @@ import { StorageService } from '../services/storage/storage.service';
   styleUrls: ['./content.component.scss'],
 })
 export class ContentComponent {
+  test() {
+    console.log('test');
+  }
   appState$: Observable<State<Response<ContactGroups>>>;
   readonly stateEnum = StateEnum;
   contact: any;
@@ -31,24 +34,7 @@ export class ContentComponent {
   ) {}
 
   ngOnInit(): void {
-    this.appState$ = this.contactGroupService.getGroupById$().pipe(
-      map((response) => {
-        this.dataSubject.next(response);
-        return {
-          state: this.stateEnum.LOADED_STATE,
-          appData: {
-            ...response,
-            data: { results: response.data.results.reverse() },
-          },
-        };
-      }),
-      startWith({ state: this.stateEnum.LOADING_STATE }),
-      catchError((error: string) => {
-        return of({ state: this.stateEnum.ERROR_STATE, error });
-      })
-    );
-  }
-  ngOnchange() {
+    console.log('cent');
     this.appState$ = this.contactGroupService.getGroupById$().pipe(
       map((response) => {
         this.dataSubject.next(response);
