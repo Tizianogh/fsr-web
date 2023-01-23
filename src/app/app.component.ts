@@ -84,14 +84,13 @@ export class AppComponent {
     let groupe: ContactGroups = {
       libelle: addContactForm.value.libelleGroupe,
     };
+    let idContact = addContactForm.value.idContact;
 
     this.contactGroupService
-      .create$(addContactForm.value.idContact, groupe as ContactGroups)
+      .create$(idContact, groupe)
       .subscribe((response) => {
         console.warn(response);
       });
-
-    this.addContactForm.reset();
   }
 
   submitPut(putContact: FormGroup) {

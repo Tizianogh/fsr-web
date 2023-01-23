@@ -1,3 +1,4 @@
+<form [formGroup]="deleteContactNum" (ngSubmit)="submitDeleteNum(deleteContactNum)">
 <li class="contact">
     <img class="avatar" src="https://ui-avatars.com/api/?background={{randomColor}}&color=fff&name={{contact.firstName}}+{{contact.firstName}}" alt="Contact">
     <div class="wrapper-title">
@@ -5,9 +6,13 @@
             <span class="title-contact">{{contact.firstName}} - {{contact.address.rue}}, {{contact.address.ville}} {{contact.address.departement}} - {{contact.address.pays}}</span>
 
         </a>
-        <select name="group">
-            <option *ngFor="let g of contact.phones" value={{g.num}}>{{g.num}}</option>
+        <select name="group" formControlName="idPhone">
+            <option *ngFor="let g of contact.phones" value={{g.idPhoneNum}}>{{g.num}}</option>
         </select>
+
      </div>
+     <button type="submit" class="button error delete"><img class="trash-icon" src="/assets/icons/svg/trash.svg" alt="Supprimer"></button>
+
 </li>
+</form>
 <div class="divider"></div> 

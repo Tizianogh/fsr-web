@@ -27,7 +27,6 @@
                     <button (click)="toggle('createContact')" class="button-CRUD save">CREATE contact</button>
                     <button (click)="toggle('updateContact')" class="button-CRUD save">UPDATE contact</button>
                     <button (click)="toggle('deleteContact')" class="button-CRUD save">DELETE contact</button>
-                    <button (click)="toggle('deleteNumeros')" class="button-CRUD save">DELETE numeros</button>
                     <button (click)="toggle('deleteContactGroup')" class="button-CRUD save">DELETE contact du group</button>
                     <button (click)="toggle('putContactGroup')" class="button-CRUD save">PUT contact du group</button>
                     <button (click)="toggle('deleteBean')" class="button-CRUD save">CREATE bean</button>
@@ -45,7 +44,7 @@
                     <form *ngIf="deleteGroup" [formGroup]="deleteGroupFrom" (ngSubmit)="submitDeleteGroup(deleteGroupFrom)">
                         <div class="field-modal"><span>Group</span></div>
                         <select name="group" formControlName="idGroup">
-                            <option *ngFor="let cg of listContactGroup" value="{{cg.idContactGroup}}">{{cg.idContactGroup}}</option>                        
+                            <option *ngFor="let cg of listContactGroup" value="{{cg.idContactGroup}}">{{cg.idContactGroup}} - {{cg.libelle}}</option>                        
                         </select>
                         <button type="submit" class="button-CRUD error">DELETE</button>
                     </form>
