@@ -62,8 +62,6 @@ export class AddContactComponent {
   }
 
   submitFormAddContact(addContactForm: FormGroup) {
-    console.table(addContactForm.value);
-
     let contact: Contact = {
       lastName: addContactForm.value.profilLastname,
       firstName: addContactForm.value.profilName,
@@ -77,8 +75,6 @@ export class AddContactComponent {
       email: addContactForm.value.profilEmail,
     };
 
-    console.table(contact);
-
     this.contactService.create$(contact).subscribe({
       next: (response) => {
         this.dataSubject.next(response);
@@ -87,48 +83,6 @@ export class AddContactComponent {
         console.error(error);
       },
     });
-  }
-
-  shouldShowLastNameRequiredError() {
-    const lastName = this.addContactForm.controls.profilLastname;
-
-    return lastName.touched && lastName.hasError('required');
-  }
-
-  shouldShowFirstNameRequiredError() {
-    const firstName = this.addContactForm.controls.profilName;
-
-    return firstName.touched && firstName.hasError('required');
-  }
-
-  shouldShowEmailRequiredError() {
-    const email = this.addContactForm.controls.profilEmail;
-
-    return email.touched && email.hasError('required');
-  }
-
-  shouldShowStreetRequiredError() {
-    const street = this.addContactForm.controls.profilAdressStreet;
-
-    return street.touched && street.hasError('required');
-  }
-
-  shouldShowCityRequiredError() {
-    const city = this.addContactForm.controls.profilAdressCity;
-
-    return city.touched && city.hasError('required');
-  }
-
-  shouldShowZipRequiredError() {
-    const zip = this.addContactForm.controls.profilAddressZip;
-
-    return zip.touched && zip.hasError('required');
-  }
-
-  shouldShowCountryRequiredError() {
-    const country = this.addContactForm.controls.profilAddressCountry;
-
-    return country.touched && country.hasError('required');
   }
 
   get f() {

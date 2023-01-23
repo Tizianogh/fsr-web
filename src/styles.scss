@@ -70,15 +70,11 @@ nav ul {
   height: 100%;
 }
 
-.groups {
+.groups , .contacts{
   background: #111B21;
   cursor: pointer;
   height: 100%;
   overflow-y: scroll;
-
-  :hover {
-    background: #202C33;
-  }
 }
 
 .group, .contact {
@@ -169,8 +165,7 @@ nav ul {
   background: #dfd3cc;
 }
 
-.trash-icon {
-  filter: invert(0.8);
+.trash-icon,  .trash-icon:hover{
   margin-bottom: -0.4rem;
   width: 1.5rem;
   height: 1.5rem;
@@ -199,7 +194,7 @@ nav ul {
   display: block;
 }
 
-input {
+input, select{
   color: #cccccc;
   margin: 0.5rem;
   background: 0;
@@ -240,8 +235,32 @@ input {
   cursor: pointer;
 }
 
+.button-CRUD{
+  margin: 0.3rem;
+  background: 0;
+  border: 0;
+  outline: none;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1em;
+  transition: padding 0.3s 0.2s ease;
+  border-bottom: solid 2px #2F3B43;
+  color: #cccccc;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.delete{
+  height: 40px;
+  width: 40px;
+}
+
 .save:hover {
   background: #168a73;
+}
+.create:hover {
+  background: #165e8a;
 }
 
 .error:hover {
@@ -250,6 +269,13 @@ input {
 
 .save {
   background: #1abc9c;
+  color: #cccccc;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.create {
+  background: #1a8bbc;
   color: #cccccc;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -284,17 +310,6 @@ input {
   display: block;
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.contacts {
-  background: #111B21;
-  cursor: pointer;
-  height: 60%;
-  overflow-y: scroll;
-
-  :hover {
-    background: #202C33;
-  }
 }
 
 .field {
@@ -378,13 +393,12 @@ input {
   width: 30rem;
   border-radius: 1rem;
   padding: 2rem;
+  margin-top: 5rem;
   background: #202C33;
   box-shadow: 0 10px 20px rgba(black, 0.2);
   left: 50%;
   max-width: 90%;
-  position: absolute;
   top: 50%;
-  transform: translate(-50%, -50%);
   text-align: left;
   max-height: 90vh;
   display: flex;
@@ -401,6 +415,10 @@ input {
 
   text-align: center;
   margin: 2rem;
+}
+option{
+  background: #202C33;
+  color: #fff;
 }
 .field-modal{
   margin-top: 1rem;
@@ -433,4 +451,4 @@ input {
   width: 100%;
   overflow-y: scroll;
   height: 7rem;
-}
+} 

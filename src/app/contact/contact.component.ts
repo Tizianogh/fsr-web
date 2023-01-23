@@ -9,6 +9,7 @@ import { Contact } from '../models/Contact';
 export class ContactComponent {
   randomColor: string;
   @Input() contact: Contact;
+  listOfGroups: any;
 
   ngOnInit(): void {
     this.color();

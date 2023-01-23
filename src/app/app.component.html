@@ -1,5 +1,126 @@
 <div class="home">
   <app-sidebar/>
-  <app-content/>
-</div>
+  <ng-container class="home">
+    <app-sidebar>
+    </app-sidebar>
+    <div class="content">
+        <!--<fsr-webapp-modal-contact>
+        </fsr-webapp-modal-contact>-->
+        <div class="nav-content">
+            <div class="group-wrapper">
+                <img class="group-avatar" src="/assets/icons/svg/user.png" alt="Groupe">
+                <div class="wrapper-title">
+                    <a href="#" class="group-link">
+                        <span class="title-group">+33 56 45 78 89</span>
+                    </a>
+                    <a class="text">
+                        <span class="text-group">+33 56 45 78 89 : hello tiziano, i want to discus anyway because you are good.</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="modal">
+                <div>
+                    <button (click)="toggle('createGroup')" class="button-CRUD save">CREATE groupe</button>
+                    <button (click)="toggle('deleteGroup')" class="button-CRUD save">DELETE groupe</button>
+                    <button (click)="toggle('createContact')" class="button-CRUD save">CREATE contact</button>
+                    <button (click)="toggle('updateContact')" class="button-CRUD save">UPDATE contact</button>
+                    <button (click)="toggle('deleteContact')" class="button-CRUD save">DELETE contact</button>
+                    <button (click)="toggle('deleteNumeros')" class="button-CRUD save">DELETE numeros</button>
+                    <button (click)="toggle('deleteContactGroup')" class="button-CRUD save">DELETE contact du group</button>
+                    <button (click)="toggle('putContactGroup')" class="button-CRUD save">PUT contact du group</button>
+                    <button (click)="toggle('deleteBean')" class="button-CRUD save">CREATE bean</button>
+
+                    <form *ngIf="createGroup" [formGroup]="addContactForm" (ngSubmit)="submitFormAddContactGroup(addContactForm)">
+                        <div class="field-modal"><span>Nom Groupe</span></div>
+                        <input type="text" name="profil-lastname" formControlName="libelleGroupe" placeholder="Libelle">
+                        <div class="field-modal"><span>Contact</span></div>
+                        <select name="contact" formControlName="idContact">
+                            <option *ngFor="let contact of listContact" value="{{contact.idContact}}">{{contact.firstName}} {{contact.lastName}}</option>
+                        </select>
+                        <button type="submit" class="button-CRUD create">CREATE</button>
+                    </form>
+
+                    <form *ngIf="deleteGroup" [formGroup]="deleteGroupFrom" (ngSubmit)="submitDeleteGroup(deleteGroupFrom)">
+                        <div class="field-modal"><span>Group</span></div>
+                        <select name="group" formControlName="idGroup">
+                            <option *ngFor="let cg of listContactGroup" value="{{cg.idContactGroup}}">{{cg.idContactGroup}}</option>                        
+                        </select>
+                        <button type="submit" class="button-CRUD error">DELETE</button>
+                    </form>
+
+                    <form *ngIf="createContact">
+                        <div class="field-modal"><span>Profil</span></div>
+                        <input type="text" name="profil-lastname" placeholder="Nom">
+                        <input type="text" name="profil-name" placeholder="Prenom">
+                        <input type="text" name="profil-email" placeholder="Email">
+                        <div class="field-modal"><span>Adresse</span></div>
+                        <input type="text" name="profil-address-street" placeholder="Rue">
+                        <input type="text" name="profil-address-city" placeholder="Ville">
+                        <input type="text" name="profil-address-country" placeholder="Pays">
+                        <div class="field-modal"><span>Numero(s)</span></div>
+                        <input type="text" name="profil-phone[]" placeholder="Numero">
+                        <button type="submit" class="button-CRUD create">CREATE</button>
+                    </form>
+
+                    <form *ngIf="updateContact">
+                        <div class="field-modal"><span>Profil</span></div>
+                        <input type="text" name="profil-lastname" placeholder="Nom">
+                        <input type="text" name="profil-name" placeholder="Prenom">
+                        <input type="text" name="profil-email" placeholder="Email">
+                        <div class="field-modal"><span>Adresse</span></div>
+                        <input type="text" name="profil-address-street" placeholder="Rue">
+                        <input type="text" name="profil-address-city" placeholder="Ville">
+                        <input type="text" name="profil-address-country" placeholder="Pays">
+                        <div class="field-modal"><span>Numero(s)</span></div>
+                        <input type="text" name="profil-phone[]" placeholder="Numero">
+                        <button type="submit" class="button-CRUD save">SAVE</button>
+                    </form>
+
+                    <form *ngIf="deleteContact" [formGroup]="deleteContactFrom" (ngSubmit)="submitDeleteContactForm(deleteContactFrom)">
+                        <div class="field-modal"><span>Contact</span></div>
+                        <select name="contact" formControlName="idContact" >
+                            <option value="contact.contactId" *ngFor="let contact of listContact" value="{{contact.idContact}}">{{contact.firstName}} {{contact.lastName}}</option>
+                        </select>
+                        <button type="submit" class="button-CRUD error">DELETE</button>
+                    </form>
+
+                    <form *ngIf="deleteNumeros">
+                        <div class="field-modal"><span>Numeros</span></div>
+                        <select name="contact">
+                            <option value="numero.numeroId">0645678998</option>
+                        </select>
+                        <button type="submit" class="button-CRUD error">DELETE</button>
+                    </form>
+                    <form *ngIf="deleteContactGroup">
+                        <div class="field-modal"><span>Group</span></div>
+                        <select name="group">
+                            <option value="group.groupId">group.libelle</option>
+                        </select>
+                        <div class="field-modal"><span>Contact</span></div>
+                        <select name="contact">
+                            <option value="contact.contactId">contact.firstName contact.lastName</option>
+                        </select>
+                        <button type="submit" class="button-CRUD error">DELETE</button>
+                    </form>
+                    <form *ngIf="putContactGroup" [formGroup]="putContact" (ngSubmit)="submitPut(putContact)">
+                        <div class="field-modal"><span>Contact</span></div>
+                        <select name="contact" formControlName="idContact">
+                            <option *ngFor="let contact of listContact" value="{{contact.email}}">{{contact.firstName}} {{contact.lastName}}</option>
+                        </select>
+                        <div class="field-modal"><span>Group</span></div>
+                        <select name="group" formControlName="idGroup">
+                            <option *ngFor="let cg of listContactGroup" value="{{cg.idContactGroup}}">{{cg.idContactGroup}}</option>
+                        </select>
+                        <button type="submit" class="button-CRUD save">SAVE</button>
+                    </form>
+                    <form *ngIf="createBean">
+                        <button type="submit" class="button-CRUD create">CREATE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container></div>
 <router-outlet/>

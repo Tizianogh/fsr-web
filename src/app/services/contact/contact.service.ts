@@ -34,6 +34,20 @@ export class ContactService {
         .pipe(tap(console.log), catchError(this.handleError))
     );
 
+  bean$ = () =>
+    <Observable<Response<Contact>>>(
+      this.http
+        .post<Response<Contact>>(`${this.apiUrl}/contact/bean/new`, null)
+        .pipe(tap(console.log), catchError(this.handleError))
+    );
+
+  delete$ = (idContact: string) =>
+    <Observable<Response<Contact>>>(
+      this.http
+        .delete<Response<Contact>>(`${this.apiUrl}/contact/delete/${idContact}`)
+        .pipe(tap(console.log), catchError(this.handleError))
+    );
+
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);
     return throwError(() => error);

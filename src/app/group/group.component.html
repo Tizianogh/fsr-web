@@ -1,12 +1,16 @@
+<form [formGroup]="deleteContactFromGroup" (ngSubmit)="submitDeleteContactFromGroup(deleteContactFromGroup)">
 <li class="group">
     <img class="avatar" src="/assets/icons/svg/user.png" alt="Groupe">
     <div class="wrapper-title">
         <a href="" class="group-link">
             <span class="title-group">{{group.libelle}}</span>
         </a>
-        <a href="" class="text-group">
-            <span class="text-group">+33 56 45 78 89 : hello dude, whats up :).</span>
-        </a>
+        <select name="group" formControlName="idContact">
+            <option *ngFor="let g of group.contacts" value="{{group.idContactGroup}}|{{g.email}}">{{g.firstName}}</option>
+        </select>
     </div>
+    <button class="button error delete"><img class="trash-icon" src="/assets/icons/svg/trash.svg" alt="Supprimer"></button>
 </li>
+</form>
+
 <div class="divider"></div>
